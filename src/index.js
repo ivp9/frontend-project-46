@@ -1,6 +1,7 @@
 /* eslint-disable linebreak-style */
-import { readFileSync } from 'fs';
+import fs from 'fs';
 import _ from 'lodash';
+import path from 'path';
 
 const genDiff = (dataParse1, dataParse2) => {
   const keys1 = _.keys(dataParse1);
@@ -26,15 +27,19 @@ const genDiff = (dataParse1, dataParse2) => {
       result.push(elementOfArr);
     }
   }
-  console.log(`{\n${result.join('\n')}\n}`);
+  return result;
 };
 
 const gendiff = (filepath1, filepath2) => {
-  const data1 = readFileSync(filepath1, 'utf-8');
-  const data2 = readFileSync(filepath2, 'utf-8');
-  const dataParse1 = JSON.parse(data1);
-  const dataParse2 = JSON.parse(data2);
-  genDiff(dataParse1, dataParse2);
+  const currenDirectory = process.cwd();
+
+  const resolvedFile1 = path.resolve(currenDirectory, filepath1);
+  const resolvedFile2 = path.resolve(currenDirectory, filepath2);
+
+  const obj1 = JSON.parse(fs.readFileSync(resolvedFile1, 'utf-8'));
+  const obj2 = JSON.parse(fs.readFileSync(resolvedFile2, 'utf-8'));
+  const result = genDiff(obj1, obj2);
+  return `{\n${result.join('\n')}\n}`;
 };
 
 export default gendiff;

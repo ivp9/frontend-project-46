@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 
 import { program } from 'commander';
-// eslint-disable-next-line import/extensions
-import gendiff from '../index.js';
+import gendiff from '../src/index.js';
 
 program
   .name('gendiff')
@@ -12,7 +11,7 @@ program
   .argument('<filepath2>')
   .option('-f, --format <type>', 'output format')
   .action((filepath1, filepath2) => {
-    gendiff(filepath1, filepath2);
+    console.log(gendiff(filepath1, filepath2));
   });
 
 program.parse();
