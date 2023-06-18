@@ -1,3 +1,4 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/ivp9/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/ivp9/frontend-project-46/actions)
+[![my-github-action-tests](https://github.com/ivp9/frontend-project-46/actions/workflows/my-makefile.yml/badge.svg)](https://github.com/ivp9/frontend-project-46/actions/workflows/my-makefile.yml)
 [![asciicast](https://asciinema.org/a/FeKBQS6iELv2uSx4DvLGuF7DB.svg)](https://asciinema.org/a/FeKBQS6iELv2uSx4DvLGuF7DB)
