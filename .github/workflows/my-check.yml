@@ -19,7 +19,7 @@ jobs:
       - name: lint
         run: make lint
       
-      - name: test
+      - name: my-test
         run: make test
       
       - name: Test & publish code coverage
