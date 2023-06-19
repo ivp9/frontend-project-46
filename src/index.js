@@ -6,7 +6,7 @@ import path from 'path';
 const genDiff = (dataParse1, dataParse2) => {
   const keys1 = _.keys(dataParse1);
   const keys2 = _.keys(dataParse2);
-  const keys = _.union(keys1, keys2);
+  const keys = _.sortBy(_.union(keys1, keys2));
 
   const result = [];
   // eslint-disable-next-line no-restricted-syntax
