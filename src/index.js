@@ -2,6 +2,7 @@
 import fs from 'fs';
 import _ from 'lodash';
 import path from 'path';
+import getParsing from './parsers.js';
 
 const genDiff = (dataParse1, dataParse2) => {
   const keys1 = _.keys(dataParse1);
@@ -36,8 +37,12 @@ const gendiff = (filepath1, filepath2) => {
   const resolvedFile1 = path.resolve(currenDirectory, filepath1);
   const resolvedFile2 = path.resolve(currenDirectory, filepath2);
 
-  const obj1 = JSON.parse(fs.readFileSync(resolvedFile1, 'utf-8'));
-  const obj2 = JSON.parse(fs.readFileSync(resolvedFile2, 'utf-8'));
+  const extension1 = path.extname(filepath1);
+  const extension2 = path.extname(filepath2);
+
+  const obj1 = getParsing(fs.readFileSync(resolvedFile1, 'utf-8'), extension1);
+  const obj2 = getParsing(fs.readFileSync(resolvedFile2, 'utf-8'), extension2);
+
   const result = genDiff(obj1, obj2);
   return `{\n${result.join('\n')}\n}`;
 };

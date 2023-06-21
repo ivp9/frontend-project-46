@@ -10,10 +10,22 @@ const __dirname = dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
 
-const firstFile = getFixturePath('file1.json');
-const secondFile = getFixturePath('file2.json');
+const firstFileJSON = getFixturePath('file1.json');
+const secondFileJSON = getFixturePath('file2.json');
+const firstFileYAML = getFixturePath('file1.yaml');
+const secondFileYAML = getFixturePath('file2.yaml');
+const firstFileYML = getFixturePath('file1.yml');
+const secondFileYML = getFixturePath('file2.yml');
 const expected = readFile('expectedFile.txt');
 
-test('gendiff test', () => {
-  expect(gendiff(firstFile, secondFile)).toEqual(expected);
+test('gendiff test for JSON', () => {
+  expect(gendiff(firstFileJSON, secondFileJSON)).toEqual(expected);
+});
+
+test('gendiff test for YAML', () => {
+  expect(gendiff(firstFileYAML, secondFileYAML)).toEqual(expected);
+});
+
+test('gendiff test for YML', () => {
+  expect(gendiff(firstFileYML, secondFileYML)).toEqual(expected);
 });
