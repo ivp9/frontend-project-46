@@ -16,7 +16,7 @@ const firstFileYAML = getFixturePath('file1.yaml');
 const secondFileYAML = getFixturePath('file2.yaml');
 const firstFileYML = getFixturePath('file1.yml');
 const secondFileYML = getFixturePath('file2.yml');
-const expected = readFile('expectedFile.txt');
+const expected = readFile('expectedFileStylish.txt');
 
 test('gendiff test for JSON', () => {
   expect(gendiff(firstFileJSON, secondFileJSON)).toEqual(expected);

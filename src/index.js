@@ -3,31 +3,27 @@ import fs from 'fs';
 import _ from 'lodash';
 import path from 'path';
 import getParsing from './parsers.js';
+import stylish from './formatters/stylish.js';
 
-const genDiff = (dataParse1, dataParse2) => {
-  const keys1 = _.keys(dataParse1);
-  const keys2 = _.keys(dataParse2);
+const makeDiff = (data1, data2) => {
+  const keys1 = _.keys(data1);
+  const keys2 = _.keys(data2);
   const keys = _.sortBy(_.union(keys1, keys2));
 
-  const result = [];
-  // eslint-disable-next-line no-restricted-syntax
-  for (const key of keys) {
-    if (!_.has(dataParse1, key)) {
-      const elementOfArr = `  + ${key}: ${dataParse2[key]}`;
-      result.push(elementOfArr);
-    } else if (!_.has(dataParse2, key)) {
-      const elementOfArr = `  - ${key}: ${dataParse1[key]}`;
-      result.push(elementOfArr);
-    } else if (dataParse1[key] !== dataParse2[key]) {
-      const elementOfArr1 = `  - ${key}: ${dataParse1[key]}`;
-      const elementOfArr2 = `  + ${key}: ${dataParse2[key]}`;
-      result.push(elementOfArr1);
-      result.push(elementOfArr2);
-    } else {
-      const elementOfArr = `    ${key}: ${dataParse2[key]}`;
-      result.push(elementOfArr);
+  const result = keys.map((key) => {
+    if (!_.has(data1, key)) {
+      return { key, value: data2[key], type: 'added' };
     }
-  }
+    if (!_.has(data2, key)) {
+      return { key, value: data1[key], type: 'deleted' };
+    }
+    if (_.isObject(data1[key]) && _.isObject(data2[key])) {
+      return { key, children: makeDiff(data1[key], data2[key]), type: 'nested' };
+    }
+    return data1[key] === data2[key] ? { key, value: data1[key], type: 'unchanged' } : {
+      key, value1: data1[key], value2: data2[key], type: 'changed',
+    };
+  });
   return result;
 };
 
@@ -43,8 +39,9 @@ const gendiff = (filepath1, filepath2) => {
   const obj1 = getParsing(fs.readFileSync(resolvedFile1, 'utf-8'), extension1);
   const obj2 = getParsing(fs.readFileSync(resolvedFile2, 'utf-8'), extension2);
 
-  const result = genDiff(obj1, obj2);
-  return `{\n${result.join('\n')}\n}`;
+  const tree = makeDiff(obj1, obj2);
+  const result = stylish(tree);
+  return result;
 };
 
 export default gendiff;
