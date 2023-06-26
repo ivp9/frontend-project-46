@@ -2,7 +2,7 @@
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 import fs from 'fs';
-import gendiff from '../src/index.js';
+import genDiff from '../src/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -16,16 +16,35 @@ const firstFileYAML = getFixturePath('file1.yaml');
 const secondFileYAML = getFixturePath('file2.yaml');
 const firstFileYML = getFixturePath('file1.yml');
 const secondFileYML = getFixturePath('file2.yml');
-const expected = readFile('expectedFileStylish.txt');
+const expectedStylish = readFile('expectedFileStylish.txt');
+const expectedPlain = readFile('expectedFilePlain.txt');
+const formatForStylish = 'stylish';
+const formatForPlain = 'plain';
 
-test('gendiff test for JSON', () => {
-  expect(gendiff(firstFileJSON, secondFileJSON)).toEqual(expected);
+test('gendiff test stylish for JSON', () => {
+  expect(genDiff(firstFileJSON, secondFileJSON, formatForStylish)).toEqual(expectedStylish);
 });
 
-test('gendiff test for YAML', () => {
-  expect(gendiff(firstFileYAML, secondFileYAML)).toEqual(expected);
+test('gendiff test stylish for YAML', () => {
+  expect(genDiff(firstFileYAML, secondFileYAML, formatForStylish)).toEqual(expectedStylish);
 });
 
-test('gendiff test for YML', () => {
-  expect(gendiff(firstFileYML, secondFileYML)).toEqual(expected);
+test('gendiff test stylish for YML', () => {
+  expect(genDiff(firstFileYML, secondFileYML, formatForStylish)).toEqual(expectedStylish);
+});
+
+test('gendiff test plain for JSON', () => {
+  expect(genDiff(firstFileJSON, secondFileJSON, formatForPlain)).toEqual(expectedPlain);
+});
+
+test('gendiff test plain for YAML', () => {
+  expect(genDiff(firstFileYAML, secondFileYAML, formatForPlain)).toEqual(expectedPlain);
+});
+
+test('gendiff test plain for YML', () => {
+  expect(genDiff(firstFileYML, secondFileYML, formatForPlain)).toEqual(expectedPlain);
+});
+
+test('gendiff test default format for JSON', () => {
+  expect(genDiff(firstFileJSON, secondFileJSON)).toEqual(expectedStylish);
 });

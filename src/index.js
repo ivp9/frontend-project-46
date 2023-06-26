@@ -3,7 +3,7 @@ import fs from 'fs';
 import _ from 'lodash';
 import path from 'path';
 import getParsing from './parsers.js';
-import stylish from './formatters/stylish.js';
+import getFormatter from './formatters/index.js';
 
 const makeDiff = (data1, data2) => {
   const keys1 = _.keys(data1);
@@ -27,7 +27,7 @@ const makeDiff = (data1, data2) => {
   return result;
 };
 
-const gendiff = (filepath1, filepath2) => {
+const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
   const currenDirectory = process.cwd();
 
   const resolvedFile1 = path.resolve(currenDirectory, filepath1);
@@ -40,8 +40,7 @@ const gendiff = (filepath1, filepath2) => {
   const obj2 = getParsing(fs.readFileSync(resolvedFile2, 'utf-8'), extension2);
 
   const tree = makeDiff(obj1, obj2);
-  const result = stylish(tree);
-  return result;
+  return getFormatter(tree, formatName);
 };
 
-export default gendiff;
+export default genDiff;
