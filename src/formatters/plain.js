@@ -28,7 +28,7 @@ const plain = (tree) => {
           throw new Error('Unsupported node type');
       }
     });
-    return [...lines].filter((element) => element !== null).join('\n');
+    return lines.filter((element) => element !== null).join('\n');
   };
   return iter(tree, []);
 };
