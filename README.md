@@ -10,7 +10,7 @@
 ### Maintainability status:
 [![Maintainability](https://api.codeclimate.com/v1/badges/011161896990b8482ad1/maintainability)](https://codeclimate.com/github/ivp9/frontend-project-46/maintainability)
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&pause=500&center=true&multiline=true&repeat=false&width=1300&height=100&lines=The+tool+which+finds+the+difference+between+two+json+or+yml%2Fyaml+files;+and+prints+the+result+in+necessary+format+on+demand.)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&pause=500&center=true&multiline=true&width=1300&height=100&lines=The+tool+which+finds+the+difference+between+two+json+or+yml%2Fyaml+files;+and+prints+the+result+in+necessary+format+on+demand.)](https://git.io/typing-svg)
 
 ## Supportive formats:
 
