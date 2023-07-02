@@ -1,7 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/ivp9/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/ivp9/frontend-project-46/actions)",
+  "description": "The tool which finds the difference between two json or yml files and prints the result in necessary format on demand.",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
