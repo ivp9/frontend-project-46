@@ -34,11 +34,8 @@ gendiff --help
 
 ## Screenshots:
 - Stylish output form (default):
-![Screenshot](https://github.com/ivp9/frontend-project-46/blob/main/2023-06-29_00-30-04.png)
+![Screenshot](https://github.com/ivp9/frontend-project-46/blob/main/imagesForREADME/2023-06-29_00-30-04.png)
 - Plain output form:
-![Screenshot](https://github.com/ivp9/frontend-project-46/blob/main/2023-06-29_00-31-07.png)
+![Screenshot](https://github.com/ivp9/frontend-project-46/blob/main/imagesForREADME/2023-06-29_00-31-07.png)
 - JSON output form
-![Screenshot](https://github.com/ivp9/frontend-project-46/blob/main/2023-06-29_00-27-59.png)
-
-## Asciinema:
-[![asciicast](https://asciinema.org/a/cKOJ6VO3lzmRfuTnv6AVPJM2k.svg)](https://asciinema.org/a/cKOJ6VO3lzmRfuTnv6AVPJM2k)
+![Screenshot](https://github.com/ivp9/frontend-project-46/blob/main/imagesForREADME/2023-06-29_00-27-59.png)
