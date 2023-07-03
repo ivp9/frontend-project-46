@@ -2,6 +2,7 @@
 [![Actions Status](https://github.com/ivp9/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/ivp9/frontend-project-46/actions)
 
 ### My tests status:
+[![my-github-action-tests](https://github.com/ivp9/frontend-project-46/actions/workflows/my-check.yml/badge.svg)](https://github.com/ivp9/frontend-project-46/actions/workflows/my-check.yml)
 
 ### Test coverage status:
 [![Test Coverage](https://api.codeclimate.com/v1/badges/011161896990b8482ad1/test_coverage)](https://codeclimate.com/github/ivp9/frontend-project-46/test_coverage)
