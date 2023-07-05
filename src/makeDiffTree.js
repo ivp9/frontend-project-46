@@ -12,12 +12,15 @@ const makeDiff = (data1, data2) => {
     if (!_.has(data2, key)) {
       return { key, value: data1[key], type: 'deleted' };
     }
-    if (_.isObject(data1[key]) && _.isObject(data2[key])) {
+    if (_.isPlainObject(data1[key]) && _.isPlainObject(data2[key])) {
       return { key, children: makeDiff(data1[key], data2[key]), type: 'nested' };
     }
-    return data1[key] === data2[key] ? { key, value: data1[key], type: 'unchanged' } : {
-      key, value1: data1[key], value2: data2[key], type: 'changed',
-    };
+    if (!_.isEqual(data1[key], data2[key])) {
+      return {
+        key, value1: data1[key], value2: data2[key], type: 'changed',
+      };
+    }
+    return { key, value: data1[key], type: 'unchanged' };
   });
   return result;
 };
